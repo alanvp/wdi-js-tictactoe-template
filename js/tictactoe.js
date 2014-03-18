@@ -1,6 +1,6 @@
 $(function() {
 
-  //### 'jquery' UI elements for game manipulation
+  //### 'jquery' UI  elements for game manipulation
   //var game              =    // the game container
   //var board             =    // the board  container
   var status_indicators = $('#teams li');   // status bar container
@@ -10,13 +10,13 @@ $(function() {
   var players = [                         // player data
     {
       name:      'Ernie',
-      marker:    '&times;',
+      marker:    'X',
       img_url:   'img/ernie.jpg',
       indicator: $(status_indicators[0])
     },
     {
       name:      'Bert',
-      marker:    '&oslash;',
+      marker:    'O',
       img_url:   'img/bert.jpg',
       indicator: $(status_indicators[1])
     }
