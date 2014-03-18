@@ -4,6 +4,7 @@ ticTacToeApp.controller('ticTacToeCtrl', function ($scope) {
 
   $scope.initGame = function() {
     $scope.players = [
+//      {name: "Computer", marker: "X", img: "#"},
       {name: "Bert", marker: "X", img: "/img/bert.jpg"},
       {name: "Ernie", marker: "0", img: "/img/ernie.jpg"},
     ];  
@@ -15,6 +16,7 @@ ticTacToeApp.controller('ticTacToeCtrl', function ($scope) {
     currentPlayer = $scope.currentPlayer;
     if (currentPlayer === $scope.players[0]) {$scope.currentPlayer = $scope.players[1];}
     else {$scope.currentPlayer = $scope.players[0];}
+    if ($scope.currentPlayer.name === "Computer") {computerMove();}
   };
 
   $scope.isWinner = function() {
@@ -45,6 +47,9 @@ ticTacToeApp.controller('ticTacToeCtrl', function ($scope) {
     if ($scope.isWinner()) {console.log($scope.currentPlayer.name+" Won!");}
     else if ($scope.isTie()) {console.log("Tie!");}
     else {switchPlayer();}
+  };
+
+  var computerMove = function() {
   };
 
   $scope.initGame();
