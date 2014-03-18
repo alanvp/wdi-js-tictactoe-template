@@ -1,37 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ticTacToeApp">
   <head>
     <title>TIC TAC TOE</title>
     <link rel="stylesheet" type="text/css" href="css/reset.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="angular/controller.js"></script>  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/underscore.min.js"></script>
   </head>
-  <body>
-
+  <body ng-controller="ticTacToeCtrl">
      <div id="game">
        <ul id="teams">
-        <li>
-          <img src="">
-          <h2>Team <span class="team"></span></h2>
-          <h3 class="player"></h3>
+        <li ng-class = "{current: currentPlayer === players[0]}">  
+          <img src="{{players[0].img}}">
+          <h2>Team: <span class="team">X</span></h2>
+          <h3 class="player">{{players[0].name}}</h3>
         </li>
-        <li>
-          <img src="">
-          <h2>Team <span class="team"></span></h2>
-          <h3 class="player"></h3>
+        <li ng-class="{current: currentPlayer === players[1]}">
+          <img src="{{players[1].img}}">
+          <h2>Team: <span class="team">0</span></h2>
+          <h3 class="player">{{players[1].name}}</h3>
         </li>
       </ul>
-      <div id="board">
+      <div id="board" ng-repeat="tile in tiles track by $index">
+        <div class="tile" id="tile{{$index}}" ng-click="addMarker()">
+          {{tile}}
+        </div>
       </div>
-      <div id="results">
-        <h1></h1>
-        <span class="image"></span>
-        <button>play again</button>
+      <div id="results" ng-show="isWinner()">
+        <h1>{{currentPlayer.name}} Wins!</h1>
+        <span class="image">
+          <img src="{{currentPlayer.img}}">
+        </span>
+        <button ng-click="initGame()">play again</button>
+      </div>
+      <div id="results" ng-show="isTie()">
+        <h1>Tie Game!</h1>
+        <button ng-click="initGame()">play again</button>
       </div>
     </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script src="js/underscore.min.js"></script>
-  <script src="js/tictactoe.js"></script>
+
+
   </body>
 </html>
 
